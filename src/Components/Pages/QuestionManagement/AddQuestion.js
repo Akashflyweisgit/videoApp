@@ -1,4 +1,6 @@
-import React, { useState,  } from "react";
+/** @format */
+
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -8,10 +10,9 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 // import Paper from "@material-ui/core/Paper";
 import HOC from "../../../Common/Hoc";
-import { Card, Grid,  } from "@material-ui/core";
+import { Card, Grid } from "@material-ui/core";
 //pagination
 import TablePagination from "@material-ui/core/TablePagination";
-
 
 //DIALOG BOX
 import {
@@ -28,7 +29,6 @@ const useStyles = makeStyles({
 });
 
 function AddQuestion(props) {
-
   const [EditDailogOpen, setEditDailogOpen] = useState("");
   const [EditcategoryName, setEditcategoryName] = useState(false);
 
@@ -48,17 +48,17 @@ function AddQuestion(props) {
 
   const [titlename, settitlename] = useState("");
 
-//   const filterData = CategoryDataArry.filter((event) => {
-//     return (
-//       event.code.toLowerCase().indexOf(titlename.toLowerCase()) !== -1
-//     );
-//   });
+  //   const filterData = CategoryDataArry.filter((event) => {
+  //     return (
+  //       event.code.toLowerCase().indexOf(titlename.toLowerCase()) !== -1
+  //     );
+  //   });
 
   const classes = useStyles();
 
   return (
     <>
-      <div className="home_padding">    
+      <div className="home_padding">
         <div className="content_padding">
           <Grid className="Component_main_grid mb-3">
             <Grid item md={9}>
@@ -103,42 +103,29 @@ function AddQuestion(props) {
               <Table className={classes.table} aria-label="simple table">
                 <TableHead>
                   <TableRow>
-                    
                     <TableCell>Qustion</TableCell>
                     <TableCell>Mark</TableCell>
                     <TableCell>Action</TableCell>
-                  
-                   
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  
-                    <TableRow >
-                      
-                      <TableCell>Expalin Node js</TableCell>
-                      <TableCell>10</TableCell>
+                  <TableRow>
+                    <TableCell>Expalin Node js</TableCell>
+                    <TableCell>10</TableCell>
 
-                      
-                      
-
-                      <TableCell>
-                        <button
-                          type="button"
-                          class="btn btn-info mr-4"
-                          onClick=""
-                        >
-                          <i class="fa fa-edit"></i>
-                        </button> 
-                        <button
-                          type="button"
-                          class="btn btn-info"
-                          onClick=""
-                        >
-                          <i class="fa fa-trash"></i>
-                        </button>
-                      </TableCell>
-                    </TableRow>
-         
+                    <TableCell>
+                      <button
+                        type="button"
+                        class="btn btn-info mr-4"
+                        onClick=""
+                      >
+                        <i class="fa fa-edit"></i>
+                      </button>
+                      <button type="button" class="btn btn-info" onClick="">
+                        <i class="fa fa-trash"></i>
+                      </button>
+                    </TableCell>
+                  </TableRow>
                 </TableBody>
               </Table>
               <TablePagination

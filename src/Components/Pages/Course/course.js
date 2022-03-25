@@ -65,7 +65,7 @@ function Course(props) {
       });
   }, [isupdated]);
 
-  console.log('cat arr data',CategoryDataArry)
+  console.log("cat arr data", CategoryDataArry);
 
   ///delete Category Name
   const deleteCategory = (row) => {
@@ -223,6 +223,7 @@ function Course(props) {
                         <img
                           src={getBaseUrl() + row.CourseImg}
                           style={{ height: "30px", width: "50px" }}
+                          alt=""
                         />
                       </TableCell>
                       <TableCell>{row.name}</TableCell>

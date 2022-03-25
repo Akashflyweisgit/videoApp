@@ -32,8 +32,8 @@ import AdminRevenue from "./Components/Pages/AdminRevenue/AdminRevenue";
 import Language from "./Components/Pages/languagesettings/Language";
 import Logo from "./Components/Pages/logo/Logo";
 import GetFeaturedCourses from "./Components/Pages/featuredCourses/GetFeaturedCourses";
-import  AddFeaturedCourses  from "./Components/Pages/featuredCourses/AddFeaturedCourses";
-import  GetRatings  from "./Components/Pages/ratings/GetRatings";
+import AddFeaturedCourses from "./Components/Pages/featuredCourses/AddFeaturedCourses";
+import GetRatings from "./Components/Pages/ratings/GetRatings";
 import AddRatings from "./Components/Pages/ratings/AddRatings";
 import GetPackage from "./Components/Pages/packages/GetPackage";
 
