@@ -55,31 +55,6 @@ function PremiumVideos(props) {
     setEditId(row._id);
   };
 
-  // useEffect(() => {
-  //   window.scrollTo(0, 0);
-
-  //   let url = getBaseUrl() + "api/get/course";
-
-  //   axios
-  //     .get(url)
-  //     .then(
-  //       (res) => {
-  //         console.log("data viewCourse:::", res);
-
-  //         setVideo(res.data.getCourse);
-  //       },
-
-  //       (error) => {
-  //         setisloading(false);
-  //         console.log("data response error:::", error);
-  //       }
-  //     )
-  //     .catch((e) => {
-  //       setisloading(false);
-  //       console.log("data response error:::", e);
-  //     });
-  // }, [isupdated]);
-
   const getVideo = () => {
     let url = getBaseUrl() + "api/get/course";
 
@@ -317,8 +292,8 @@ function PremiumVideos(props) {
                         </video>
                       </TableCell>
 
-                      <TableCell>Title</TableCell>
-                      <TableCell>Description</TableCell>
+                      <TableCell>}{row.instructor}</TableCell>
+                      <TableCell>{row.name}</TableCell>
 
                       <TableCell>
                         <button

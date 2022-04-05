@@ -1,4 +1,6 @@
-import React, { useState, } from "react";
+/** @format */
+
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -9,10 +11,9 @@ import TableRow from "@material-ui/core/TableRow";
 import axios from "axios";
 import { getBaseUrl } from "../../utils";
 import HOC from "../../../Common/Hoc";
-import { Card, Grid, } from "@material-ui/core";
+import { Card, Grid } from "@material-ui/core";
 //pagination
 import TablePagination from "@material-ui/core/TablePagination";
-
 
 //DIALOG BOX
 import {
@@ -30,22 +31,21 @@ const useStyles = makeStyles({
 
 function AddCoupon(props) {
   const [EditDailogOpen, setEditDailogOpen] = useState("");
-  const [couponData,setCouponDataArry] = useState([])
-   let url = getBaseUrl()+"api/get/coupon"
-     axios
-     .get(url)
-     .then(
-      (res)=>{
-        console.log("couponData:::>",res)
-      setCouponDataArry(res.data.getCoupon);
-      console.log("copoumdat::",couponData)
-      },
-       (error)=>{
-        console.log("Data response",error)
-       }
-      )
+  const [couponData, setCouponDataArry] = useState([]);
 
-//ation hadler
+  let url = getBaseUrl() + "api/get/coupon";
+  axios.get(url).then(
+    (res) => {
+      console.log("couponData:::>", res);
+      setCouponDataArry(res.data.getCoupon);
+      console.log("copoumdat::", couponData);
+    },
+    (error) => {
+      console.log("Data response", error);
+    }
+  );
+
+  //ation hadler
   const [rowsPerPage, setRowsPerPage] = React.useState(3);
   const [page, setPage] = React.useState(0);
   const handleChangePage = (event, newPage) => {
@@ -65,11 +65,10 @@ function AddCoupon(props) {
     );
   });
 
-
   const classes = useStyles();
   return (
     <>
-      <div className="home_padding">    
+      <div className="home_padding">
         <div className="content_padding">
           <Grid className="Component_main_grid mb-3">
             <Grid item md={9}>
@@ -97,9 +96,7 @@ function AddCoupon(props) {
                 <span>
                   <input
                     value=""
-                    onChange={() => { }}
-                      
-                   
+                    onChange={() => {}}
                     type="text"
                     class="form-control"
                     placeholder="Search by Name"
@@ -114,23 +111,24 @@ function AddCoupon(props) {
               <Table className={classes.table} aria-label="simple table">
                 <TableHead>
                   <TableRow>
-                    
                     <TableCell>Code</TableCell>
                     <TableCell>Discount</TableCell>
                     <TableCell>Expiry Date</TableCell>
                     <TableCell>Operations</TableCell>
-                   
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                
-                    <TableRow >
-                      
-                      <TableCell>code</TableCell>
-                      <TableCell>discount_percentage</TableCell>
-                      <TableCell>expire_date</TableCell>
-                      
-                      
+                  {(rowsPerPage > 0
+                    ? filterData.slice(
+                        page * rowsPerPage,
+                        page * rowsPerPage + rowsPerPage
+                      )
+                    : filterData
+                  ).map((row) => (
+                    <TableRow>
+                      <TableCell>{row.couponCode}</TableCell>
+                      <TableCell>{row.couponamont}</TableCell>
+                      <TableCell>{row.expires}</TableCell>
 
                       <TableCell>
                         {/* <button
@@ -140,16 +138,12 @@ function AddCoupon(props) {
                         >
                           <i class="fa fa-edit"></i>
                         </button> */}
-                        <button
-                          type="button"
-                          class="btn btn-info"
-                          onClick=""
-                        >
+                        <button type="button" class="btn btn-info" onClick="">
                           <i class="fa fa-trash"></i>
                         </button>
                       </TableCell>
                     </TableRow>
-           
+                  ))}
                 </TableBody>
               </Table>
               <TablePagination
@@ -187,9 +181,7 @@ function AddCoupon(props) {
                     class="form-control"
                     placeholder="Add Category"
                     value=""
-                    onChange={(e) => {
-                      
-                    }}
+                    onChange={(e) => {}}
                   />
                 </div>
               </div>

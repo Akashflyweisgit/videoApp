@@ -1,3 +1,5 @@
+/** @format */
+
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -42,17 +44,17 @@ function Student(props) {
   useEffect(() => {
     window.scrollTo(0, 0);
 
-    let url = getBaseUrl() + "address/all";
+    let url = getBaseUrl() + "api/user/all";
     let config = {
-      headers: { Authorization: `Bearer ${token}` }
+      headers: { Authorization: `Bearer ${token}` },
     };
 
     axios
-      .get(url,config)
+      .get(url, config)
       .then(
         (res) => {
-          console.log("data Adress:::", res);
-          setAddressDataArry(res.data.addresses);
+          console.log("data Adress:::", res.data);
+          setAddressDataArry(res.data);
         },
 
         (error) => {
@@ -64,12 +66,8 @@ function Student(props) {
         setisloading(false);
         console.log("data response error:::", e);
       });
-  },);
+  });
 
- 
- 
-
- 
   // for pagination hadler
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
   const [page, setPage] = React.useState(0);
@@ -86,9 +84,9 @@ function Student(props) {
 
   const [first_name, setfirst_name] = useState("");
 
-  const filterData = AddressDataArry.filter((event) => {
+  const filterData = AddressDataArry?.filter((event) => {
     return (
-      event.first_name.toLowerCase().indexOf(first_name.toLowerCase()) !== -1
+      event.first_name?.toLowerCase().indexOf(first_name.toLowerCase()) !== -1
     );
   });
 
@@ -141,11 +139,9 @@ function Student(props) {
               <Table className={classes.table} aria-label="simple table">
                 <TableHead>
                   <TableRow>
-                  <TableCell>Name</TableCell>
-                  <TableCell>Father Name</TableCell>  
-                    <TableCell>Class</TableCell>
-                    <TableCell>Section</TableCell>
+                    <TableCell>Name</TableCell>
                     <TableCell>Address</TableCell>
+                    <TableCell>Email</TableCell>
                     <TableCell>Phone</TableCell>
                   </TableRow>
                 </TableHead>
@@ -157,13 +153,11 @@ function Student(props) {
                       )
                     : filterData
                   ).map((row) => (
-                    <TableRow key={row.name}>
-                      <TableCell>{row.first_name}</TableCell>
-                      <TableCell>{row.city}</TableCell>
-                      <TableCell>{row.country}</TableCell>
-                      <TableCell>{row.province}</TableCell>
-                      <TableCell>{row.country_code+row.phone_number}</TableCell>
-
+                    <TableRow>
+                      <TableCell>{row.name}</TableCell>
+                      <TableCell>{row.address}</TableCell>
+                      <TableCell>{row.email}</TableCell>
+                      <TableCell>{row.phone}</TableCell>
                       {/* <TableCell>
                         <button
                           type="button"

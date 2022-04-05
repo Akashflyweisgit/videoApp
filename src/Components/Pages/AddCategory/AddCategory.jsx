@@ -1,3 +1,5 @@
+/** @format */
+
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -41,15 +43,15 @@ function AddCategory(props) {
   useEffect(() => {
     window.scrollTo(0, 0);
 
-    let url = getBaseUrl() + "category";
+    let url = getBaseUrl() + "api/get/category";
 
     axios
       .get(url)
       .then(
         (res) => {
-          console.log("data viewCategory:::", res);
+          console.log("data viewCategory:::", res.data);
 
-          setCategoryDataArry(res.data.categories);
+          setCategoryDataArry(res.data);
         },
 
         (error) => {
@@ -148,10 +150,8 @@ function AddCategory(props) {
 
   const [titlename, settitlename] = useState("");
 
-  const filterData = CategoryDataArry.filter((event) => {
-    return (
-      event.name.toLowerCase().indexOf(titlename.toLowerCase()) !== -1
-    );
+  const filterData = CategoryDataArry?.filter((event) => {
+    return event.name?.toLowerCase().indexOf(titlename.toLowerCase()) !== -1;
   });
 
   const classes = useStyles();
@@ -216,17 +216,17 @@ function AddCategory(props) {
                         page * rowsPerPage + rowsPerPage
                       )
                     : filterData
-                  ).map((row) => (
+                  )?.map((row) => (
                     <TableRow key={row.name}>
-                       <TableCell component="th" scope="row">
+                      <TableCell component="th" scope="row">
                         <img
-                          src={ row.image}
+                          src={row.image}
                           style={{ height: "30px", width: "50px" }}
+                          alt=""
                         />
-                        </TableCell>
-                      <TableCell>{row.name}</TableCell>
-                      <TableCell>{row.description}</TableCell>
-                      
+                      </TableCell>
+                      <TableCell>{row.category}</TableCell>
+                      <TableCell>Description</TableCell>
 
                       <TableCell>
                         <button

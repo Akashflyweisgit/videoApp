@@ -240,8 +240,8 @@ function TestVideos(props) {
                         </video>
                       </TableCell>
 
-                      <TableCell>Title</TableCell>
-                      <TableCell>Description</TableCell>
+                      <TableCell>{row.instructor}</TableCell>
+                      <TableCell>{row.name}</TableCell>
 
                       <TableCell>
                         <button
